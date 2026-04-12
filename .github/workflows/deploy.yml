@@ -20,5 +20,5 @@ jobs:
         env:
           FTP_PASS: ${{ secrets.FTPPASSW }}
         run: |
-          lftp -u u231680863,"$FTP_PASS" ftp://147.93.14.200 \
+          lftp -u u231680863.flaviopbianchi,"$FTP_PASS" ftp://ftp.grey-sheep-571288.hostingersite.com \
             -e "set ftp:ssl-allow no; set net:timeout 30; mirror -R --delete --no-perms --exclude-glob .git --exclude-glob .github --exclude-glob CLAUDE.md --exclude-glob SKILLS --exclude-glob '*.md' . public_html; quit"
