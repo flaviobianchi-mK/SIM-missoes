@@ -20,7 +20,7 @@ jobs:
           username: u231680863
           password: ${{ secrets.FTPPASSW }}
           local-dir: ./
-          server-dir: /public_html/
+          server-dir: public_html/
           exclude: |
             **/.git*
             **/.git*/**
