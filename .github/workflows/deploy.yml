@@ -17,20 +17,8 @@ jobs:
         run: sudo apt-get install -y lftp
 
       - name: Enviar arquivos via FTP
+        env:
+          FTP_PASS: ${{ secrets.FTPPASSW }}
         run: |
-          lftp -u u231680863,${{ secrets.FTPPASSW }} ftp://147.93.14.200 <<EOF
-          set ftp:ssl-allow no
-          set net:timeout 30
-          mirror -R \
-            --delete \
-            --no-perms \
-            --exclude-glob .git \
-            --exclude-glob .github \
-            --exclude-glob CLAUDE.md \
-            --exclude-glob SKILLS \
-            --exclude-glob SIM-primitivos-design-system.md \
-            --exclude-glob specs-apple-design.md \
-            --exclude-glob Texto-site.txt \
-            . public_html
-          quit
-          EOF
+          lftp -u u231680863,"$FTP_PASS" ftp://147.93.14.200 \
+            -e "set ftp:ssl-allow no; set net:timeout 30; mirror -R --delete --no-perms --exclude-glob .git --exclude-glob .github --exclude-glob CLAUDE.md --exclude-glob SKILLS --exclude-glob '*.md' . public_html; quit"
