@@ -16,8 +16,8 @@ jobs:
       - name: Enviar via FTP para Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server:   ${{ secrets.FTPHOST }}
-          username: ${{ secrets.FTPUSER }}
+          server: 147.93.14.200
+          username: u231680863
           password: ${{ secrets.FTPPASSW }}
           local-dir: ./
           server-dir: /public_html/
