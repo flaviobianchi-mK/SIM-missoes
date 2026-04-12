@@ -1,0 +1,320 @@
+/*
+ * responsive.css — Breakpoints
+ * mobile:   max-width 734px
+ * tablet:   735px – 1068px
+ * desktop:  1069px – 1439px
+ * large:    1440px – 2159px
+ * xlarge:   2160px+  (4K)
+ */
+
+/* ── Large — 1440px ──────────────────────────── */
+@media (min-width: 1440px) {
+
+  :root {
+    --max-content-width-wide: 1360px;
+  }
+
+  .hero__split {
+    max-width: 1360px;
+    gap: var(--space-4xl);
+    padding-left:  var(--space-2xl);
+    padding-right: var(--space-2xl);
+  }
+
+  .hero__title {
+    font-size: clamp(var(--text-6xl), 4vw, var(--text-display));
+  }
+}
+
+/* ── XLarge — 2160px (4K) ────────────────────── */
+@media (min-width: 2160px) {
+
+  :root {
+    --max-content-width-wide: 1920px;
+    --nav-height-global: 68px;
+  }
+
+  .hero__split {
+    max-width: 1920px;
+    gap: 120px;
+    padding-left:  80px;
+    padding-right: 80px;
+    padding-bottom: 140px;
+  }
+
+  .hero__title {
+    font-size: 4.5rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.375rem;
+    max-width: 620px;
+  }
+
+  .hero__video-wrapper {
+    border-radius: var(--radius-2xl);
+    box-shadow:
+      0 0 0 1.5px rgba(255, 149, 0, 0.22),
+      0 40px 100px rgba(0, 0, 0, 0.55);
+  }
+}
+
+/* ── Tablet ───────────────────────────────── */
+@media (max-width: 1068px) {
+
+  /* 90vw de largura — 5vw de gutter automático em cada lado */
+  :root {
+    --max-content-width:      90vw;
+    --max-content-width-wide: 90vw;
+  }
+
+  .section-inner,
+  .section-inner--wide {
+    padding: 0;   /* gutter vem do auto-margin do 90vw */
+  }
+
+  /* Hero split → uma coluna em tablet */
+  .hero__split {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
+    text-align: center;
+  }
+
+  /* Vídeo sobe acima do texto */
+  .hero__video { order: -1; }
+
+  .hero__text {
+    align-items: center;
+  }
+
+  .hero__title,
+  .hero__subtitle {
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__subtitle { margin-bottom: var(--space-xl); }
+
+  .hero__actions {
+    justify-content: center;
+  }
+
+  /* Missão — padding menor */
+  .missao-section {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+  }
+
+  .missao-section__header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .missao-cards {
+    padding: 0;
+  }
+
+  /* Stat cards */
+  .stat-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Feature cards */
+  .feature-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  /* CTA cards */
+  .cta-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Story two-col */
+  .story-section__two-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .story-section__two-col--reverse {
+    direction: ltr;
+  }
+
+  /* Bento */
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 240px 240px 240px;
+  }
+
+  .bento-cell--wide   { grid-column: span 1; }
+  .bento-cell--tall   { grid-row: span 1; }
+
+  /* Footer */
+  .site-footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+  }
+}
+
+
+/* ── Mobile ───────────────────────────────── */
+@media (max-width: 734px) {
+
+  /* 90vw de largura — 5vw de gutter automático em cada lado */
+  :root {
+    --section-padding-v:      var(--section-padding-v-mobile);
+    --max-content-width:      90vw;
+    --max-content-width-wide: 90vw;
+  }
+
+  .section-inner,
+  .section-inner--wide {
+    padding: 0;   /* gutter vem do auto-margin do 90vw */
+  }
+
+  /* NAV */
+  .global-nav__links { display: none; }
+  .global-nav__cta   { display: none; }
+  .global-nav__hamburger { display: flex; }
+
+  .global-nav__logo-text {
+    font-size: 0.75rem;
+  }
+
+  /* Hero */
+  .hero__split {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    padding: var(--space-xl) var(--space-md) var(--space-3xl);
+    text-align: center;
+  }
+
+  /* Vídeo sobe acima do texto */
+  .hero__video { order: -1; }
+
+  .hero__text {
+    align-items: center;
+  }
+
+  .hero__title,
+  .hero__subtitle {
+    text-align: center;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__subtitle { margin-bottom: var(--space-xl); }
+
+  .hero__actions {
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  /* Missão — padding menor */
+  .missao-section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .missao-section__header {
+    margin-bottom: var(--space-lg);
+  }
+
+  .missao-cards {
+    padding: 0;
+    gap: var(--space-sm);
+  }
+
+  /* Stat cards — single col */
+  .stat-cards {
+    grid-template-columns: 1fr;
+    background: none;
+    gap: 0;
+  }
+
+  .stat-card {
+    border-bottom: 0.5px solid var(--color-border-dark);
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .stat-card:last-child { border-bottom: none; }
+
+  /* Feature cards */
+  .feature-cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  /* CTA cards */
+  .cta-cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  /* Bento — single col */
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: var(--space-sm);
+  }
+
+  .bento-cell           { height: 220px; }
+  .bento-cell--wide     { grid-column: span 1; }
+  .bento-cell--tall     { grid-row: span 1; height: 220px; }
+
+  /* Partners */
+  .partners-grid {
+    gap: var(--space-2xl);
+  }
+
+  .partner-divider { display: none; }
+
+  /* Story col img */
+  .story-section__col-img img {
+    height: 260px;
+  }
+
+  /* Hero scroll indicator */
+  .hero__scroll { display: none; }
+
+  /* Footer */
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .site-footer__bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* CTA section actions */
+  .cta-section__actions {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .cta-section__actions .btn {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+
+/* ── Mobile Small ─────────────────────────── */
+@media (max-width: 480px) {
+
+  .global-nav__logo-text { display: none; }
+
+  .hero__subtitle {
+    font-size: var(--text-base);
+  }
+}

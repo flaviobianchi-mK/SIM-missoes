@@ -1,0 +1,22 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Site antigo
+Neno e Liz - Simplesmente Missões - Sepal - Mevic - Batistado do Povo.html
+Neno e Liz - Simplesmente Missões - Sepal - Mevic - Batistado do Povo_files/
+
+# Vídeos locais (grandes demais para git)
+videos/*.mp4
+videos/*.mov
+videos/*.webm
+
+# Fontes locais (carregadas via Google Fonts em produção)
+Comfortaa/
+Zalando_Sans_SemiExpanded/
+
+# Node / build
+node_modules/
+dist/
+.env

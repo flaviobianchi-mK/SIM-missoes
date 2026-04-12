@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apoie a missão de Neno e Liz Bianchi em Beja, Portugal. Revitalização de igrejas, evangelismo universitário e apoio a imigrantes no sul de Portugal.">
+  <title>Simplesmente Missões — Beja, Portugal</title>
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" type="image/png" href="IMG/logo-sm.png">
+</head>
+<body>
+
+
+  <!-- ════════════════════════════════════════
+       NAV GLOBAL — sticky blur
+  ════════════════════════════════════════ -->
+  <header>
+    <nav class="global-nav" role="navigation" aria-label="Navegação principal">
+      <div class="global-nav__inner">
+
+        <!-- Logo — versão branca para fundo escuro -->
+        <a class="global-nav__logo" href="#inicio" aria-label="Simplesmente Missões — início">
+          <img src="img/marca/Frame 1-1.png" alt="Logo Simplesmente Missões">
+        </a>
+
+        <!-- Links desktop -->
+        <ul class="global-nav__links" role="list">
+          <li><a href="#missao">Nossa Missão</a></li>
+          <li><a href="#por-que-beja">Por que Beja</a></li>
+          <li><a href="#neno-liz">Neno e Liz</a></li>
+          <li><a href="#parceiros">Parceiros</a></li>
+        </ul>
+
+        <!-- Grupo direito: redes sociais + separador + CTA -->
+        <div class="global-nav__actions">
+          <div class="global-nav__social">
+            <a href="https://www.instagram.com/simplesmentemissoes/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@simplesmentemissoes" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="https://wa.me/5511969126575" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            </a>
+          </div>
+          <span class="global-nav__sep" aria-hidden="true"></span>
+          <a class="global-nav__cta" href="#apoiar">Apoiar Projeto</a>
+        </div>
+
+        <!-- Hambúrguer mobile -->
+        <button class="global-nav__hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+      <!-- Menu mobile -->
+      <nav id="mobile-menu" class="global-nav__mobile-menu" aria-label="Menu mobile">
+        <a href="#missao">Nossa Missão</a>
+        <a href="#por-que-beja">Por que Beja</a>
+        <a href="#neno-liz">Neno e Liz</a>
+        <a href="#parceiros">Parceiros</a>
+        <a class="global-nav__mobile-cta" href="#apoiar">Apoiar Projeto</a>
+        <div class="global-nav__mobile-social">
+          <a href="https://www.instagram.com/simplesmentemissoes/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@simplesmentemissoes" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+          <a href="https://wa.me/5511969126575" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </a>
+        </div>
+      </nav>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- ════════════════════════════════════════
+         HERO
+    ════════════════════════════════════════ -->
+    <section id="inicio" class="hero" aria-label="Hero — Simplesmente Missões">
+
+      <!-- Fundo: vídeo YouTube em loop sem som -->
+      <div class="hero__bg" aria-hidden="true">
+        <iframe
+          src="https://www.youtube.com/embed/MJKmUX4qOo0?autoplay=1&mute=1&controls=0&loop=1&playlist=MJKmUX4qOo0&start=10&rel=0&disablekb=1&modestbranding=1&iv_load_policy=3&fs=0&playsinline=1&enablejsapi=0"
+          title=""
+          allow="autoplay; encrypted-media"
+          tabindex="-1"
+        ></iframe>
+      </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <!-- Container split: texto | vídeo -->
+      <div class="hero__split">
+
+        <!-- Lado esquerdo — Texto -->
+        <div class="hero__text">
+          <span class="hero__eyebrow">Projeto Beja · Portugal 2025</span>
+
+          <h1 class="hero__title">
+            Somos chamados<br>para alcançar Beja.
+          </h1>
+
+          <p class="hero__subtitle">
+            Revitalizando igrejas, apoiando imigrantes e alcançando estudantes
+            no sul de Portugal. Junte-se a esta jornada missionária.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#apoiar">Apoiar Projeto</a>
+            <a class="btn btn--outline" href="#missao">Conhecer a Missão</a>
+          </div>
+        </div>
+
+        <!-- Lado direito — Vídeo YouTube -->
+        <div class="hero__video">
+          <div class="hero__video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/A-Kick0s7Nc?rel=0&modestbranding=1&color=white"
+              title="Simplesmente Missões — Beja, Portugal"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero__scroll" aria-hidden="true">
+        <span></span>
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         STAT CARDS — Por que Beja (números)
+    ════════════════════════════════════════ -->
+    <section class="stat-section" aria-label="Números sobre Beja">
+      <div class="stat-cards">
+
+        <div class="stat-card fade-up">
+          <p class="stat-card__label">Habitantes</p>
+          <p class="stat-card__number">25<span class="stat-card__unit">mil</span></p>
+          <p class="stat-card__desc">pessoas em Beja e região</p>
+        </div>
+
+        <div class="stat-card fade-up fade-up--delay-2">
+          <p class="stat-card__label">Universitários</p>
+          <p class="stat-card__number">3<span class="stat-card__unit">mil+</span></p>
+          <p class="stat-card__desc">estudantes na universidade local</p>
+        </div>
+
+        <div class="stat-card fade-up fade-up--delay-4">
+          <p class="stat-card__label">Campo Missionário</p>
+          <p class="stat-card__number">&#9679;</p>
+          <p class="stat-card__desc">poucas igrejas evangélicas ativas na região</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         POR QUE BEJA — Story Section dark
+    ════════════════════════════════════════ -->
+    <section id="por-que-beja" class="story-section story-section--light" aria-labelledby="beja-headline">
+      <div class="section-inner section-inner--beja">
+
+        <span class="story-section__tag">Por que Beja?</span>
+        <h2 id="beja-headline" class="story-section__headline fade-up">
+          Uma cidade estratégica com grande necessidade espiritual.
+        </h2>
+        <p class="story-section__body fade-up fade-up--delay-1">
+          Beja é uma cidade no sul de Portugal com aproximadamente 25.000 habitantes
+          e uma crescente população de imigrantes e refugiados. Com mais de 3.000
+          estudantes universitários e poucas igrejas evangélicas ativas, a região
+          representa um campo missionário fértil e urgente.
+        </p>
+
+        <!-- Accordion Apple-style: lista à esquerda + imagem fixa à direita -->
+        <div class="beja-accordion fade-up fade-up--delay-2">
+
+          <!-- Coluna esquerda: lista accordion -->
+          <div class="beja-accordion__list" role="list">
+
+            <!-- Item 1 -->
+            <div class="beja-accord__item is-open" role="listitem" data-index="0">
+              <button class="beja-accord__trigger" aria-expanded="true">
+                <span class="beja-accord__title">Saúde Mental em Crise</span>
+                <svg class="beja-accord__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="beja-accord__panel">
+                <p class="beja-accord__text">O Alentejo (e em especial Beja) é o distrito com <strong>maior índice de suicídios e depressão</strong> de Portugal. Uma cidade marcada por solidão, desemprego e falta de perspectiva — uma terra que precisa urgentemente da esperança do Evangelho.</p>
+                <div class="beja-accord__tags">
+                  <span class="beja-tag">Saúde Mental</span>
+                  <span class="beja-tag">Urgência</span>
+                </div>
+                <div class="beja-accord__mobile-img">
+                  <img src="img/portugal-01.png" alt="Vista de Beja, Portugal" loading="lazy">
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="beja-accord__item" role="listitem" data-index="1">
+              <button class="beja-accord__trigger" aria-expanded="false">
+                <span class="beja-accord__title">Universitários Sem Alcance</span>
+                <svg class="beja-accord__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="beja-accord__panel">
+                <p class="beja-accord__text"><strong>Nenhuma organização evangélica</strong> trabalha entre os 4.500 alunos universitários que estudam em Beja. Uma geração inteira — jovens, abertos, em formação — sem nunca ter ouvido o Evangelho de forma intencional.</p>
+                <div class="beja-accord__tags">
+                  <span class="beja-tag">Universitários</span>
+                  <span class="beja-tag">Evangelismo</span>
+                </div>
+                <div class="beja-accord__mobile-img">
+                  <img src="img/portugal-02.png" alt="Estudantes universitários em Beja" loading="lazy">
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="beja-accord__item" role="listitem" data-index="2">
+              <button class="beja-accord__trigger" aria-expanded="false">
+                <span class="beja-accord__title">Igrejas Pequenas e Fragilizadas</span>
+                <svg class="beja-accord__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="beja-accord__panel">
+                <p class="beja-accord__text">As igrejas existentes na região são geralmente muito pequenas — <strong>50% têm menos de 25 membros</strong>. Lutam para sobreviver e registam poucas conversões e batismos. O corpo de Cristo em Beja precisa de reforço e colaboração.</p>
+                <div class="beja-accord__tags">
+                  <span class="beja-tag">Igrejas Locais</span>
+                  <span class="beja-tag">Desafio</span>
+                </div>
+                <div class="beja-accord__mobile-img">
+                  <img src="img/portugal-03.png" alt="Igrejas locais em Beja" loading="lazy">
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="beja-accord__item" role="listitem" data-index="3">
+              <button class="beja-accord__trigger" aria-expanded="false">
+                <span class="beja-accord__title">Imigrantes de Nações Fechadas</span>
+                <svg class="beja-accord__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="beja-accord__panel">
+                <p class="beja-accord__text">Residem em Beja indianos, nepaleses, tailandeses, paquistaneses, bengaleses e africanos de vários países — muitos vindos de <strong>nações com acesso muito restrito ao Evangelho</strong>. Beja tornou-se uma porta de entrada missional única.</p>
+                <div class="beja-accord__tags">
+                  <span class="beja-tag">Imigrantes</span>
+                  <span class="beja-tag">Nações Fechadas</span>
+                  <span class="beja-tag">Multicultura</span>
+                </div>
+                <div class="beja-accord__mobile-img">
+                  <img src="img/beja-city.jpg" alt="Diversidade cultural em Beja" loading="lazy">
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="beja-accord__item" role="listitem" data-index="4">
+              <button class="beja-accord__trigger" aria-expanded="false">
+                <span class="beja-accord__title">Vulnerabilidade Social Crescente</span>
+                <svg class="beja-accord__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="beja-accord__panel">
+                <p class="beja-accord__text">O panorama social em Beja é descrito como <strong>"grave, caótico e descontrolado"</strong>. São cada vez mais os cidadãos africanos e asiáticos a deambular pelas ruas sem destino, sem trabalho e pedindo algo para comer. Uma necessidade real que abre portas para o serviço cristão.</p>
+                <div class="beja-accord__tags">
+                  <span class="beja-tag">Vulnerabilidade</span>
+                  <span class="beja-tag">Necessidade Social</span>
+                </div>
+                <div class="beja-accord__mobile-img">
+                  <img src="img/missao-hero.jpg" alt="Realidade social de Beja" loading="lazy">
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /beja-accordion__list -->
+
+          <!-- Coluna direita: painel de imagem persistente (desktop/tablet) -->
+          <div class="beja-accordion__gallery" aria-hidden="true">
+            <div class="beja-accord__slide is-active" data-index="0">
+              <img src="img/portugal-01.png" alt="Vista de Beja, Portugal" loading="lazy">
+            </div>
+            <div class="beja-accord__slide" data-index="1">
+              <img src="img/portugal-02.png" alt="Estudantes universitários em Beja" loading="lazy">
+            </div>
+            <div class="beja-accord__slide" data-index="2">
+              <img src="img/portugal-03.png" alt="Igrejas locais em Beja" loading="lazy">
+            </div>
+            <div class="beja-accord__slide" data-index="3">
+              <img src="img/beja-city.jpg" alt="Diversidade cultural em Beja" loading="lazy">
+            </div>
+            <div class="beja-accord__slide" data-index="4">
+              <img src="img/missao-hero.jpg" alt="Realidade social de Beja" loading="lazy">
+            </div>
+          </div><!-- /beja-accordion__gallery -->
+
+        </div><!-- /beja-accordion -->
+
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         NOSSA MISSÃO — Feature Cards 3 frentes
+    ════════════════════════════════════════ -->
+    <section id="missao" class="missao-section" aria-labelledby="missao-headline">
+      <div class="section-inner">
+
+        <div class="missao-section__header">
+          <span class="missao-section__eyebrow">Nossa Missão em Beja</span>
+          <h2 id="missao-headline" class="missao-section__title fade-up">
+            Três frentes de atuação.
+          </h2>
+        </div>
+
+        <div class="missao-cards fade-up fade-up--delay-1">
+
+          <article class="missao-card">
+            <div class="missao-card__img-wrap">
+              <img src="img/portugal-03.png" alt="Revitalização de igrejas em Beja" loading="lazy">
+            </div>
+            <div class="missao-card__body">
+              <div class="missao-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M9 21V9l3-3 3 3v12M12 3v3M5 21V12a2 2 0 012-2h10a2 2 0 012 2v9"/></svg>
+              </div>
+              <h3 class="missao-card__title">Revitalização e Plantação</h3>
+              <p class="missao-card__text">
+                Trabalharemos na revitalização de igrejas existentes e na plantação
+                de novas comunidades de fé em Beja e região, fortalecendo o corpo
+                de Cristo no sul de Portugal.
+              </p>
+            </div>
+          </article>
+
+          <article class="missao-card">
+            <div class="missao-card__img-wrap">
+              <img src="img/beja-city.jpg" alt="Apoio a imigrantes em Beja" loading="lazy">
+            </div>
+            <div class="missao-card__body">
+              <div class="missao-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <h3 class="missao-card__title">Apoio a Imigrantes</h3>
+              <p class="missao-card__text">
+                Cuidaremos de imigrantes e refugiados em Beja, oferecendo suporte
+                espiritual, emocional e prático para sua integração e acolhida
+                na nova terra.
+              </p>
+            </div>
+          </article>
+
+          <article class="missao-card">
+            <div class="missao-card__img-wrap">
+              <img src="img/portugal-02.png" alt="Evangelismo universitário em Beja" loading="lazy">
+            </div>
+            <div class="missao-card__body">
+              <div class="missao-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <h3 class="missao-card__title">Evangelismo Universitário</h3>
+              <p class="missao-card__text">
+                Alcançaremos os mais de 3.000 estudantes da universidade local
+                através de projetos evangelísticos, grupos de discipulado e
+                relacionamentos de proximidade.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         NENO E LIZ — Story Section light
+    ════════════════════════════════════════ -->
+    <section id="neno-liz" class="story-section story-section--light" aria-labelledby="nenoeliz-headline">
+      <div class="section-inner">
+
+        <span class="story-section__tag">Quem Somos</span>
+        <h2 id="nenoeliz-headline" class="story-section__headline fade-up">
+          Conheça Neno e Liz.
+        </h2>
+        <p class="story-section__body fade-up fade-up--delay-1">
+          Conheça um pouco da nossa história e chamado para servir como
+          missionários entre o Brasil e Portugal.
+        </p>
+
+        <!-- Dois blocos: foto + texto -->
+        <div class="story-section__two-col fade-up fade-up--delay-2">
+
+          <div class="story-section__col-img">
+            <img
+              src="IMG/neno-liz.jpg"
+              alt="Neno e Liz Bianchi, missionários em Beja"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="story-section__col-text">
+            <h3 class="story-section__col-title">Uma vida de serviço ministerial.</h3>
+            <p class="story-section__col-body">
+              Somos membros da Igreja Batista do Povo — Sede Vila Mariana, em São Paulo.
+              Ao longo dos anos, servimos em diversas áreas ministeriais, incluindo
+              discipulado, aconselhamento bíblico e liderança de pequenos grupos.
+            </p>
+            <p class="story-section__col-body">
+              Nossa formação inclui a Escola Bíblica Ministerial (EBM) — três anos —,
+              além de capacitação para o ministério Lares de Paz e aconselhamento
+              bíblico. Neno atua como professor de Maturidade Cristã na EBM. Liz
+              possui formação em ministério feminino pelo Seminário Teológico
+              Evangélico Betel Brasileiro.
+            </p>
+            <p class="story-section__col-body">
+              Já servimos como missionários em Sesimbra, Portugal, onde ajudamos
+              na revitalização de uma igreja local. Fomos também presidentes do
+              capítulo da Adhonep em Vila Mariana — SP.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         BENTO GALLERY — Imagens do campo
+    ════════════════════════════════════════ -->
+    <section class="bento-section" aria-label="Imagens do campo missionário">
+      <div class="section-inner--wide">
+
+        <span class="bento-section__tag">O Campo</span>
+        <h2 class="bento-section__headline fade-up">Beja nos aguarda.</h2>
+
+        <div class="bento-grid">
+
+          <div class="bento-cell bento-cell--wide fade-up">
+            <img src="IMG/missao-hero.jpg" alt="Equipe missionária em Beja" loading="lazy">
+            <span class="bento-cell__label">Beja · Portugal</span>
+          </div>
+
+          <div class="bento-cell bento-cell--tall fade-up fade-up--delay-1">
+            <img src="IMG/beja-city.jpg" alt="Cidade de Beja" loading="lazy">
+          </div>
+
+          <div class="bento-cell fade-up fade-up--delay-2">
+            <img src="IMG/portugal-02.png" alt="Portugal" loading="lazy">
+          </div>
+
+          <div class="bento-cell fade-up fade-up--delay-3">
+            <img src="IMG/portugal-03.png" alt="Portugal" loading="lazy">
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         PARCEIROS
+    ════════════════════════════════════════ -->
+    <section id="parceiros" class="partners-section" aria-labelledby="parceiros-headline">
+      <div class="section-inner">
+
+        <span class="partners-section__tag">Parceiros</span>
+        <h2 id="parceiros-headline" class="partners-section__headline fade-up">
+          Juntos nesta missão.
+        </h2>
+
+        <div class="partners-grid fade-up fade-up--delay-1">
+
+          <div class="partner-item">
+            <img class="partner-item__logo" src="img/sepal.png" alt="SEPAL — Serviço de Evangelização para a América Latina">
+            <span class="partner-item__name">SEPAL</span>
+          </div>
+
+          <div class="partner-divider" aria-hidden="true"></div>
+
+          <div class="partner-item">
+            <img class="partner-item__logo" src="img/levamos.png" alt="MEVIC — Missão Evangélica de Vida e Crescimento">
+            <span class="partner-item__name">MEVIC</span>
+          </div>
+
+          <div class="partner-divider" aria-hidden="true"></div>
+
+          <div class="partner-item">
+            <img class="partner-item__logo partner-item__logo--ibp" src="img/logo-ibp.webp" alt="Igreja Batista do Povo">
+            <span class="partner-item__name">Igreja Batista do Povo</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         CTA — APOIAR PROJETO
+    ════════════════════════════════════════ -->
+    <section id="apoiar" class="cta-section" aria-labelledby="apoiar-headline">
+      <div class="section-inner cta-section__inner">
+
+        <span class="cta-section__eyebrow">Como posso apoiar?</span>
+        <h2 id="apoiar-headline" class="cta-section__headline fade-up">
+          Junte-se a nós nesta jornada.
+        </h2>
+        <p class="cta-section__body fade-up fade-up--delay-1">
+          Para realizar este trabalho missionário em Portugal, precisamos de
+          parceiros que nos apoiem financeiramente e em oração.
+        </p>
+
+        <div class="cta-cards fade-up fade-up--delay-2">
+
+          <div class="cta-card">
+            <div class="cta-card__icon" aria-hidden="true">
+              <!-- Ícone: moeda/doação -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v2M12 16v2M9 9.5A2.5 2.5 0 0112 7h.5a2 2 0 010 4H12a2 2 0 000 4h.5a2.5 2.5 0 002.5-2.5"/>
+              </svg>
+            </div>
+            <h3 class="cta-card__title">Apoio Financeiro</h3>
+            <p class="cta-card__body">
+              Sua contribuição financeira é fundamental para viabilizar nossa
+              missão em Portugal. Torne-se um mantenedor mensal ou faça uma
+              oferta pontual.
+            </p>
+          </div>
+
+          <div class="cta-card">
+            <div class="cta-card__icon" aria-hidden="true">
+              <!-- Ícone: oração/mãos -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 11V6a2 2 0 00-2-2v0a2 2 0 00-2 2v0M14 10V4a2 2 0 00-2-2v0a2 2 0 00-2 2v2M10 10.5V6a2 2 0 00-2-2v0a2 2 0 00-2 2v4"/>
+                <path d="M18 11a2 2 0 114 0v3a8 8 0 01-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 012.83-2.82L7 15"/>
+              </svg>
+            </div>
+            <h3 class="cta-card__title">Ore Por Nós</h3>
+            <p class="cta-card__body">
+              A oração é fundamental para o sucesso desta missão.
+              Comprometa-se a orar regularmente pelo nosso trabalho
+              em Beja e pelo campo missionário em Portugal.
+            </p>
+          </div>
+
+          <div class="cta-card">
+            <div class="cta-card__icon" aria-hidden="true">
+              <!-- Ícone: compartilhar -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/>
+              </svg>
+            </div>
+            <h3 class="cta-card__title">Divulgue o Projeto</h3>
+            <p class="cta-card__body">
+              Compartilhe nossa missão com sua igreja, amigos e familiares.
+              Quanto mais pessoas conhecerem o projeto, maiores as chances
+              de alcançarmos nosso objetivo.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Ações principais -->
+        <div class="cta-section__actions fade-up fade-up--delay-3">
+          <a class="btn btn--primary" href="mailto:contato@simplesmissoes.com.br">
+            Entrar em Contato
+          </a>
+          <a class="btn btn--outline" href="#missao">
+            Saiba Mais
+          </a>
+        </div>
+
+        <!-- Box de informações de oferta -->
+        <div class="oferta-box fade-up fade-up--delay-4">
+          <p class="oferta-box__label">Ofertas via</p>
+          <p class="oferta-box__title">Neno e Liz Bianchi — SEPAL / MEVIC</p>
+          <p class="oferta-box__body">
+            Projeto: Beja — Portugal 2025 &middot; Missionários Neno e Liz
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="section-inner">
+
+      <div class="site-footer__inner">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <img class="footer-brand__logo" src="img/marca/Frame 1-1.png" alt="Simplesmente Missões">
+          <p class="footer-brand__desc">
+            Missionários Neno e Liz Bianchi em Beja, Portugal.
+            Revitalizando igrejas, alcançando estudantes e
+            acolhendo imigrantes.
+          </p>
+          <div class="footer-brand__social">
+            <a href="https://www.instagram.com/simplesmentemissoes/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-btn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@simplesmentemissoes" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="footer-social-btn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="https://wa.me/5511969126575" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="footer-social-btn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Navegação -->
+        <div class="footer-col">
+          <p class="footer-col__title">Navegação</p>
+          <nav class="footer-col__links" aria-label="Links do footer">
+            <a href="#missao">Nossa Missão</a>
+            <a href="#por-que-beja">Por que Beja</a>
+            <a href="#neno-liz">Neno e Liz</a>
+            <a href="#parceiros">Parceiros</a>
+          </nav>
+        </div>
+
+        <!-- Apoiar -->
+        <div class="footer-col">
+          <p class="footer-col__title">Apoiar</p>
+          <nav class="footer-col__links" aria-label="Formas de apoio">
+            <a href="#apoiar">Apoio Financeiro</a>
+            <a href="#apoiar">Orar pelo Projeto</a>
+            <a href="#apoiar">Divulgar a Missão</a>
+          </nav>
+        </div>
+
+        <!-- Parceiros -->
+        <div class="footer-col">
+          <p class="footer-col__title">Parceiros</p>
+          <nav class="footer-col__links" aria-label="Parceiros institucionais">
+            <a href="#parceiros">SEPAL</a>
+            <a href="#parceiros">MEVIC</a>
+            <a href="#parceiros">Igreja Batista do Povo</a>
+          </nav>
+        </div>
+
+      </div>
+
+      <div class="site-footer__bottom">
+        <p class="site-footer__copy">
+          &copy; 2025 Simplesmente Missões · Neno e Liz Bianchi · Projeto Beja, Portugal
+        </p>
+        <p class="site-footer__copy">
+          Apoiado por SEPAL &middot; MEVIC &middot; Igreja Batista do Povo
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════
+       DONATION WIDGET — flutuante desktop
+  ════════════════════════════════════════ -->
+  <aside class="donation-widget" id="donation-widget" aria-label="Doe e apoie a missão" role="complementary">
+
+    <!-- Cabeçalho -->
+    <div class="donation-widget__header">
+      <span class="donation-widget__eyebrow">Apoie a missão</span>
+      <h2 class="donation-widget__title">Doe e nos ajude<br>nessa missão</h2>
+      <p class="donation-widget__sub">
+        Use o QR code abaixo para doar qualquer valor.<br>
+        Será depositado na conta de <strong>Neno e Liz Bianchi — MEVIC</strong><br>
+        <span class="donation-widget__account">Conta terminada em <strong>438</strong></span>
+      </p>
+      <p class="donation-widget__notice">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="donation-widget__notice-icon"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4M12 16h.01"/></svg>
+        Atenção: verifique se a conta está correta antes de confirmar. ;)
+      </p>
+    </div>
+
+    <!-- QR Code -->
+    <div class="donation-widget__qr-wrapper">
+      <img
+        src="img/qrcode-pix.png"
+        alt="QR Code PIX — Neno e Liz Bianchi"
+        class="donation-widget__qr"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      >
+      <div class="donation-widget__qr-placeholder" style="display:none;" aria-hidden="true">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- QR placeholder pattern -->
+          <rect width="120" height="120" fill="#f5f5f7" rx="8"/>
+          <rect x="10" y="10" width="35" height="35" rx="3" fill="none" stroke="#1d1d1f" stroke-width="3"/>
+          <rect x="17" y="17" width="21" height="21" rx="1" fill="#1d1d1f"/>
+          <rect x="75" y="10" width="35" height="35" rx="3" fill="none" stroke="#1d1d1f" stroke-width="3"/>
+          <rect x="82" y="17" width="21" height="21" rx="1" fill="#1d1d1f"/>
+          <rect x="10" y="75" width="35" height="35" rx="3" fill="none" stroke="#1d1d1f" stroke-width="3"/>
+          <rect x="17" y="82" width="21" height="21" rx="1" fill="#1d1d1f"/>
+          <rect x="54" y="10" width="5" height="5" fill="#1d1d1f"/><rect x="62" y="10" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="54" y="18" width="5" height="5" fill="#1d1d1f"/><rect x="62" y="18" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="10" y="54" width="5" height="5" fill="#1d1d1f"/><rect x="18" y="54" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="10" y="62" width="5" height="5" fill="#1d1d1f"/><rect x="18" y="62" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="54" y="54" width="5" height="5" fill="#1d1d1f"/><rect x="62" y="54" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="70" y="54" width="5" height="5" fill="#1d1d1f"/><rect x="78" y="54" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="54" y="62" width="5" height="5" fill="#1d1d1f"/><rect x="78" y="62" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="54" y="70" width="5" height="5" fill="#1d1d1f"/><rect x="62" y="70" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="70" y="70" width="5" height="5" fill="#1d1d1f"/><rect x="78" y="78" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="86" y="54" width="5" height="5" fill="#1d1d1f"/><rect x="94" y="54" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="102" y="54" width="5" height="5" fill="#1d1d1f"/><rect x="110" y="54" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="86" y="62" width="5" height="5" fill="#1d1d1f"/><rect x="102" y="62" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="86" y="70" width="5" height="5" fill="#1d1d1f"/><rect x="94" y="70" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="86" y="78" width="5" height="5" fill="#1d1d1f"/><rect x="94" y="86" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="86" y="94" width="5" height="5" fill="#1d1d1f"/><rect x="102" y="86" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="110" y="78" width="5" height="5" fill="#1d1d1f"/><rect x="110" y="94" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="54" y="86" width="5" height="5" fill="#1d1d1f"/><rect x="62" y="86" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="70" y="86" width="5" height="5" fill="#1d1d1f"/><rect x="54" y="94" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="70" y="94" width="5" height="5" fill="#1d1d1f"/><rect x="78" y="94" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="54" y="102" width="5" height="5" fill="#1d1d1f"/><rect x="62" y="102" width="5" height="5" fill="#1d1d1f"/>
+          <rect x="78" y="102" width="5" height="5" fill="#1d1d1f"/>
+          <text x="60" y="116" text-anchor="middle" font-size="6" fill="#6e6e73" font-family="sans-serif">Substitua por img/qrcode-pix.png</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Código copia e cola (PIX) -->
+    <div class="donation-widget__copy-row">
+      <input
+        class="donation-widget__copy-input"
+        type="text"
+        id="pix-code"
+        value="00020126580014BR.GOV.BCB.PIX0136substitua-pelo-codigo-pix-real5204000053039865802BR5918Neno e Liz Bianchi6009Sao Paulo62070503***6304ABCD"
+        readonly
+        disabled
+        aria-label="Código PIX para copiar"
+      >
+      <button
+        class="donation-widget__copy-btn"
+        id="pix-copy-btn"
+        type="button"
+        aria-label="Copiar código PIX"
+        title="Copiar código PIX"
+      >
+        <svg class="donation-widget__copy-icon donation-widget__copy-icon--copy" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+        </svg>
+        <svg class="donation-widget__copy-icon donation-widget__copy-icon--check" viewBox="0 0 24 24" aria-hidden="true" style="display:none">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- CTA principal -->
+    <button class="donation-widget__btn-alt" id="open-donation-modal" type="button">
+      Doar de outra forma
+    </button>
+
+    <!-- Compartilhar -->
+    <div class="donation-widget__share">
+      <p class="donation-widget__share-label">
+        Compartilhe nossa missão com outros irmãos.
+      </p>
+      <button class="donation-widget__share-btn" id="share-btn" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+          <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/>
+        </svg>
+        Compartilhar missão
+      </button>
+    </div>
+
+  </aside>
+
+
+  <!-- ════════════════════════════════════════
+       MODAL — Doação via SEPAL
+  ════════════════════════════════════════ -->
+  <div class="donation-modal" id="donation-modal" role="dialog" aria-modal="true" aria-labelledby="donation-modal-title" hidden>
+    <div class="donation-modal__overlay" id="donation-modal-overlay"></div>
+
+    <div class="donation-modal__panel">
+
+      <!-- Fechar -->
+      <button class="donation-modal__close" id="donation-modal-close" type="button" aria-label="Fechar modal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <!-- ── Tela 1: info ── -->
+      <div class="donation-modal__info" id="donation-modal-info">
+
+        <!-- Parceiro -->
+        <div class="donation-modal__partner">
+          <img src="img/sepal.png" alt="SEPAL" class="donation-modal__partner-logo">
+          <span class="donation-modal__partner-label">Em parceria com</span>
+        </div>
+
+        <!-- Corpo -->
+        <h2 class="donation-modal__title" id="donation-modal-title">
+          Doe pela plataforma da SEPAL
+        </h2>
+        <p class="donation-modal__body">
+          Esta doação é processada em parceria com a <strong>SEPAL — Serviço de Envio e Apoio a Líderes e Agências</strong>, organização responsável pelo envio e suporte missionário de Neno e Liz Bianchi.
+        </p>
+        <p class="donation-modal__body">
+          Ao clicar no botão abaixo, você será direcionado à plataforma segura da SEPAL para concluir sua contribuição.
+        </p>
+
+        <!-- Ações -->
+        <div class="donation-modal__actions">
+          <button class="donation-modal__btn-primary" id="open-sepal-iframe" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v2M12 16v2M9 9.5A2.5 2.5 0 0112 7h.5a2 2 0 010 4H12a2 2 0 000 4h.5a2.5 2.5 0 002.5-2.5"/></svg>
+            Acessar plataforma de doação
+          </button>
+
+          <button class="donation-modal__btn-pix" id="donation-modal-pix" type="button">
+            Prefiro doar via PIX
+          </button>
+        </div>
+
+      </div><!-- /info -->
+
+      <!-- ── Tela 2: iframe SEPAL ── -->
+      <div class="donation-modal__iframe-screen" id="donation-modal-iframe-screen" hidden>
+        <div class="donation-modal__iframe-header">
+          <button class="donation-modal__back" id="sepal-back-btn" type="button" aria-label="Voltar">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            Voltar
+          </button>
+          <div class="donation-modal__iframe-brand">
+            <img src="img/sepal.png" alt="SEPAL" class="donation-modal__partner-logo">
+          </div>
+        </div>
+        <div class="donation-modal__iframe-wrap">
+          <iframe
+            id="sepal-iframe"
+            src=""
+            title="Plataforma de doação SEPAL — Neno e Liz Bianchi"
+            allow="payment"
+          ></iframe>
+        </div>
+      </div><!-- /iframe-screen -->
+
+    </div>
+  </div>
+
+
+  <!-- JavaScript -->
+  <script src="assets/javascript/main.js" defer></script>
+
+</body>
+</html>
