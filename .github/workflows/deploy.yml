@@ -19,6 +19,7 @@ jobs:
       - name: Enviar arquivos via FTP
         env:
           FTP_PASS: ${{ secrets.FTPPASSW }}
+          FTP_USER: ${{ secrets.FTPUSER }}
         run: |
-          lftp -u u231680863.flaviopbianchi,"$FTP_PASS" ftp://ftp.grey-sheep-571288.hostingersite.com \
-            -e "set ftp:ssl-allow no; set net:timeout 30; mirror -R --delete --no-perms --exclude-glob .git --exclude-glob .github --exclude-glob CLAUDE.md --exclude-glob SKILLS --exclude-glob '*.md' . public_html; quit"
+          lftp -u "$FTP_USER","$FTP_PASS" ftp://ftp.grey-sheep-571288.hostingersite.com \
+            -e "set ftp:ssl-allow no; set net:timeout 30; mirror -R --delete --no-perms --exclude-glob .git --exclude-glob .github --exclude-glob CLAUDE.md --exclude-glob SKILLS --exclude-glob '*.md' . /home/u231680863/domains/grey-sheep-571288.hostingersite.com/public_html; quit"
