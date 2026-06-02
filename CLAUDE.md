@@ -262,6 +262,22 @@ Site de apoio missionário com foco em:
 
 ## Skills Disponíveis
 
+### Superpowers ([obra/superpowers](https://github.com/obra/superpowers))
+
+Framework de desenvolvimento com agentes — TDD, debugging, brainstorming, planos e subagentes.
+
+| Setup | Comando |
+|---|---|
+| **Clonar submodule** | `git submodule update --init --recursive` |
+| **Vincular skills** | `.\scripts\setup-superpowers.ps1` |
+| **Alternativa Cursor** | `/add-plugin superpowers` no chat (marketplace global) |
+
+**Prioridade:** instruções deste `CLAUDE.md` e skills do projeto (`SKILLS/`) têm precedência sobre Superpowers quando houver conflito.
+
+Skills Superpowers em `.cursor/skills/` (via submodule `superpowers/`). Hook `sessionStart` em `.cursor/hooks.json` injeta bootstrap automaticamente.
+
+### Skills do projeto (Simplesmente Missões)
+
 | Arquivo | Função | Quando usar |
 |---|---|---|
 | `SKILLS/skill-pro-uidesigner.md` | Designer UI sênior — design system SIM × Apple | Qualquer componente, tela ou LP visual |

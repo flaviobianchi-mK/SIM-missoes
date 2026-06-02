@@ -20,3 +20,14 @@ Zalando_Sans_SemiExpanded/
 node_modules/
 dist/
 .env
+
+# Cursor — skills do Superpowers (junctions locais; rode scripts/setup-superpowers.ps1)
+.cursor/skills/
+.cursor/debug-*.log
+.github
+/SKILLS
+sim-primitivos-design-system.md
+specs-apple-design.md
+texto-site.txt
+/scripts
+CLAUDE.md
