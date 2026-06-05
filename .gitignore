@@ -32,5 +32,6 @@ texto-site.txt
 /scripts
 CLAUDE.md
 .cursor
+.cursor-plugin
 .cursor-plugins
 superpowers
