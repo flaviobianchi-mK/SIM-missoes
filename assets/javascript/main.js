@@ -94,7 +94,9 @@
 (function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
-      const target = document.querySelector(anchor.getAttribute('href'));
+      const href = anchor.getAttribute('href');
+      if (!href || href.length < 2 || !/^#[A-Za-z][\w-]*$/.test(href)) return;
+      const target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
 
@@ -110,108 +112,45 @@
 })();
 
 
-/* ── Donation Widget: spring scroll + copy + share ── */
-(function initDonationWidget() {
-  const widget = document.getElementById('donation-widget');
-  if (!widget) return;
+/* ── Hero vídeo: autoplay silencioso ─────────── */
+(function initHeroVideo() {
+  const video = document.querySelector('.hero__video-player');
+  if (!video) return;
 
-  // Oculta em tablet / mobile via CSS — só roda em desktop
-  if (window.innerWidth <= 1068) return;
+  const wrapper = video.closest('.hero__video-wrapper');
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  // ── Entrada com delay ──────────────────────
-  setTimeout(() => widget.classList.add('is-visible'), 800);
+  video.muted = true;
+  video.defaultMuted = true;
+  video.controls = !canHover;
 
-  // ── Parallax sutil: widget flutua levemente ao rolar ──
-  // Deslocamento pequeno e clampado → parece intencional, não bugado.
-  let currentY   = 0;
-  let targetY    = 0;
-  let lastScroll = window.scrollY;
+  const tryPlay = () => {
+    video.play().catch(() => {});
+  };
 
-  const GAIN     = 0.06;   // quanto cada px de scroll vira offset (bem baixo)
-  const MAX_OFF  = 14;     // deslocamento máximo em px
-  const LERP     = 0.10;   // velocidade de interpolação (0–1)
-  const DECAY    = 0.90;   // target decai para 0 a cada frame
+  if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+    tryPlay();
+  } else {
+    video.addEventListener('loadeddata', tryPlay, { once: true });
+  }
 
-  window.addEventListener('scroll', () => {
-    const delta = window.scrollY - lastScroll;
-    lastScroll  = window.scrollY;
-    targetY    += delta * GAIN;
-    // clamp: nunca sai demais do centro
-    targetY     = Math.max(-MAX_OFF, Math.min(MAX_OFF, targetY));
-  }, { passive: true });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) tryPlay();
+  });
 
-  (function tick() {
-    currentY += (targetY - currentY) * LERP;
-    targetY  *= DECAY;
-    widget.style.transform = `translateY(calc(-50% + ${currentY.toFixed(2)}px))`;
-    requestAnimationFrame(tick);
-  })();
-
-  // ── Copiar código PIX ──────────────────────
-  const copyBtn   = document.getElementById('pix-copy-btn');
-  const pixInput  = document.getElementById('pix-code');
-  const iconCopy  = copyBtn?.querySelector('.donation-widget__copy-icon--copy');
-  const iconCheck = copyBtn?.querySelector('.donation-widget__copy-icon--check');
-
-  if (copyBtn && pixInput) {
-    copyBtn.addEventListener('click', () => {
-      // O campo está disabled — lemos o value diretamente
-      const text = pixInput.value;
-
-      navigator.clipboard.writeText(text).then(() => {
-        // Feedback visual: troca ícone por checkmark
-        if (iconCopy && iconCheck) {
-          iconCopy.style.display  = 'none';
-          iconCheck.style.display = '';
-        }
-        copyBtn.style.background    = '#34C759';
-        copyBtn.style.borderColor   = '#34C759';
-        copyBtn.style.color         = '#fff';
-
-        setTimeout(() => {
-          if (iconCopy && iconCheck) {
-            iconCopy.style.display  = '';
-            iconCheck.style.display = 'none';
-          }
-          copyBtn.style.background  = '';
-          copyBtn.style.borderColor = '';
-          copyBtn.style.color       = '';
-        }, 2000);
-      }).catch(() => {
-        // Clipboard API indisponível — silencioso
-      });
+  if (wrapper && canHover) {
+    wrapper.addEventListener('mouseenter', () => {
+      video.controls = true;
     });
-  }
-
-  // ── Modal "Doar de outra forma" ───────────
-  const openModalBtn = document.getElementById('open-donation-modal');
-  if (openModalBtn) {
-    openModalBtn.addEventListener('click', () => window.openDonationModal?.());
-  }
-
-  // ── Compartilhar missão ────────────────────
-  const shareBtn = document.getElementById('share-btn');
-  if (shareBtn) {
-    shareBtn.addEventListener('click', async () => {
-      const shareData = {
-        title: 'Simplesmente Missões — Beja, Portugal',
-        text:  'Conheça a missão de Neno e Liz Bianchi em Beja, Portugal. Apoie com oração, recursos e compartilhamento!',
-        url:   window.location.href,
-      };
-
-      if (navigator.share) {
-        try {
-          await navigator.share(shareData);
-        } catch (_) {
-          // Usuário cancelou ou erro — silencioso
-        }
-      } else {
-        // Fallback: copiar URL e mostrar feedback
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          const original = shareBtn.textContent;
-          shareBtn.textContent = 'Link copiado!';
-          setTimeout(() => { shareBtn.textContent = original; }, 2500);
-        });
+    wrapper.addEventListener('mouseleave', () => {
+      video.controls = false;
+    });
+    wrapper.addEventListener('focusin', () => {
+      video.controls = true;
+    });
+    wrapper.addEventListener('focusout', (e) => {
+      if (!wrapper.contains(e.relatedTarget)) {
+        video.controls = false;
       }
     });
   }
@@ -252,39 +191,38 @@
 })();
 
 
-/* ── Donation Modal ──────────────────────────── */
+/* ── Donation Modal (PIX → SEPAL) ────────────── */
 (function initDonationModal() {
-  const SEPAL_URL = 'https://sistema.sepal.tech/doeagora/neno_e_liz_bianchi';
+  const modal       = document.getElementById('donation-modal');
+  const overlay     = document.getElementById('donation-modal-overlay');
+  const closeBtn    = document.getElementById('donation-modal-close');
+  const pixScreen   = document.getElementById('donation-modal-pix-screen');
+  const sepalScreen = document.getElementById('donation-modal-sepal-screen');
+  const goSepalBtn  = document.getElementById('donation-modal-go-sepal');
+  const backPixBtn  = document.getElementById('donation-modal-back-pix');
+  const copyBtn     = document.getElementById('modal-pix-copy-btn');
+  const pixInput    = document.getElementById('modal-pix-code');
+  if (!modal || !pixScreen || !sepalScreen) return;
 
-  const modal        = document.getElementById('donation-modal');
-  const overlay      = document.getElementById('donation-modal-overlay');
-  const closeBtn     = document.getElementById('donation-modal-close');
-  const pixBtn       = document.getElementById('donation-modal-pix');
-  const openIframeBtn = document.getElementById('open-sepal-iframe');
-  const infoScreen   = document.getElementById('donation-modal-info');
-  const iframeScreen = document.getElementById('donation-modal-iframe-screen');
-  const iframe       = document.getElementById('sepal-iframe');
-  const backBtn      = document.getElementById('sepal-back-btn');
-  if (!modal) return;
+  const pixTitle   = document.getElementById('donation-modal-pix-title');
+  const sepalTitle = document.getElementById('donation-modal-sepal-title');
+  const iconCopy   = copyBtn?.querySelector('.donation-modal__copy-icon--copy');
+  const iconCheck  = copyBtn?.querySelector('.donation-modal__copy-icon--check');
 
-  const isDesktop = () => window.innerWidth > 1068;
-
-  function showInfoScreen() {
-    modal.classList.remove('donation-modal--iframe-mode');
-    infoScreen.hidden  = false;
-    iframeScreen.hidden = true;
-    if (iframe) iframe.src = ''; // descarrega o iframe ao voltar
+  function showPixScreen() {
+    pixScreen.hidden = false;
+    sepalScreen.hidden = true;
+    modal.setAttribute('aria-labelledby', pixTitle?.id || 'donation-modal-pix-title');
   }
 
-  function showIframeScreen() {
-    modal.classList.add('donation-modal--iframe-mode');
-    infoScreen.hidden  = true;
-    iframeScreen.hidden = false;
-    if (iframe) iframe.src = SEPAL_URL;
+  function showSepalScreen() {
+    pixScreen.hidden = true;
+    sepalScreen.hidden = false;
+    modal.setAttribute('aria-labelledby', sepalTitle?.id || 'donation-modal-sepal-title');
   }
 
   function openDonationModal() {
-    showInfoScreen(); // sempre começa na tela de info
+    showPixScreen();
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
   }
@@ -292,30 +230,199 @@
   function closeDonationModal() {
     modal.hidden = true;
     document.body.style.overflow = '';
-    showInfoScreen(); // reseta para próxima abertura
+    showPixScreen();
   }
 
   window.openDonationModal = openDonationModal;
 
-  // Botão principal: iframe no desktop, nova aba no mobile
-  openIframeBtn?.addEventListener('click', () => {
-    if (isDesktop()) {
-      showIframeScreen();
-    } else {
-      window.open(SEPAL_URL, '_blank', 'noopener,noreferrer');
-    }
+  document.querySelectorAll('.js-open-donation').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      openDonationModal();
+    });
   });
 
-  // Voltar para tela de info
-  backBtn?.addEventListener('click', showInfoScreen);
+  goSepalBtn?.addEventListener('click', showSepalScreen);
+  backPixBtn?.addEventListener('click', showPixScreen);
+
+  if (copyBtn && pixInput) {
+    copyBtn.addEventListener('click', () => {
+      const text = pixInput.value;
+      navigator.clipboard.writeText(text).then(() => {
+        if (iconCopy) iconCopy.hidden = true;
+        if (iconCheck) iconCheck.hidden = false;
+        copyBtn.setAttribute('aria-label', 'Código copiado');
+        setTimeout(() => {
+          if (iconCopy) iconCopy.hidden = false;
+          if (iconCheck) iconCheck.hidden = true;
+          copyBtn.setAttribute('aria-label', 'Copiar código PIX');
+        }, 2000);
+      }).catch(() => {});
+    });
+  }
 
   closeBtn?.addEventListener('click', closeDonationModal);
   overlay?.addEventListener('click', closeDonationModal);
-  pixBtn?.addEventListener('click', closeDonationModal);
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !modal.hidden) closeDonationModal();
   });
 })();
 
+
+/* ── Bento Gallery — expandir ao clicar ───────── */
+(function initBentoGallery() {
+  const section = document.querySelector('.bento-section');
+  const grid = document.getElementById('bento-grid');
+  const cursor = document.getElementById('bento-cursor');
+  const cells = grid ? [...grid.querySelectorAll('.bento-cell')] : [];
+  if (!section || !grid || !cells.length) return;
+
+  const canUseCustomCursor = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  const DEFAULT_LAYOUT = [
+    { col: '1 / 3', row: '1 / 2' },
+    { col: '3 / 4', row: '1 / 3' },
+    { col: '1 / 2', row: '2 / 3' },
+    { col: '2 / 3', row: '2 / 3' },
+    { col: '1 / 3', row: '3 / 4' },
+    { col: '3 / 4', row: '3 / 4' },
+  ];
+
+  const EXPAND_LAYOUTS = [
+    [
+      { col: '1 / 3', row: '1 / 3' },
+      { col: '3 / 4', row: '1 / 2' },
+      { col: '3 / 4', row: '2 / 3' },
+      { col: '1 / 2', row: '3 / 4' },
+      { col: '2 / 3', row: '3 / 4' },
+      { col: '3 / 4', row: '3 / 4' },
+    ],
+    [
+      { col: '1 / 2', row: '1 / 2' },
+      { col: '2 / 4', row: '1 / 3' },
+      { col: '1 / 2', row: '2 / 3' },
+      { col: '1 / 2', row: '3 / 4' },
+      { col: '2 / 3', row: '3 / 4' },
+      { col: '3 / 4', row: '3 / 4' },
+    ],
+    [
+      { col: '1 / 2', row: '1 / 2' },
+      { col: '3 / 4', row: '1 / 2' },
+      { col: '1 / 3', row: '1 / 3' },
+      { col: '3 / 4', row: '2 / 3' },
+      { col: '1 / 2', row: '3 / 4' },
+      { col: '2 / 3', row: '3 / 4' },
+    ],
+    [
+      { col: '1 / 2', row: '1 / 2' },
+      { col: '3 / 4', row: '1 / 2' },
+      { col: '1 / 2', row: '2 / 3' },
+      { col: '2 / 4', row: '1 / 3' },
+      { col: '1 / 2', row: '3 / 4' },
+      { col: '3 / 4', row: '3 / 4' },
+    ],
+    [
+      { col: '1 / 2', row: '1 / 2' },
+      { col: '3 / 4', row: '1 / 2' },
+      { col: '1 / 2', row: '2 / 3' },
+      { col: '2 / 3', row: '2 / 3' },
+      { col: '1 / 4', row: '2 / 4' },
+      { col: '3 / 4', row: '3 / 4' },
+    ],
+    [
+      { col: '1 / 2', row: '1 / 2' },
+      { col: '3 / 4', row: '1 / 2' },
+      { col: '1 / 2', row: '2 / 3' },
+      { col: '2 / 3', row: '2 / 3' },
+      { col: '1 / 3', row: '3 / 4' },
+      { col: '2 / 4', row: '2 / 4' },
+    ],
+  ];
+
+  let activeIndex = null;
+
+  function useSimpleLayout() {
+    return window.matchMedia('(max-width: 1068px)').matches;
+  }
+
+  function clearInlineLayout() {
+    cells.forEach((cell) => {
+      cell.style.gridColumn = '';
+      cell.style.gridRow = '';
+    });
+  }
+
+  function applyLayout(index) {
+    if (useSimpleLayout()) {
+      clearInlineLayout();
+      return;
+    }
+
+    const layout = index === null ? DEFAULT_LAYOUT : EXPAND_LAYOUTS[index];
+    cells.forEach((cell, i) => {
+      const slot = layout[i];
+      cell.style.gridColumn = slot.col;
+      cell.style.gridRow = slot.row;
+    });
+  }
+
+  function setActive(index) {
+    activeIndex = index;
+    const hasSelection = index !== null;
+
+    grid.classList.toggle('has-selection', hasSelection);
+    cells.forEach((cell, i) => {
+      const isActive = i === index;
+      cell.classList.toggle('is-active', isActive);
+      cell.setAttribute('aria-expanded', String(isActive));
+    });
+
+    if (cursor) {
+      cursor.classList.toggle('is-active', hasSelection);
+    }
+
+    applyLayout(index);
+  }
+
+  cells.forEach((cell, index) => {
+    cell.addEventListener('click', () => {
+      setActive(activeIndex === index ? null : index);
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && activeIndex !== null) {
+      setActive(null);
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (activeIndex !== null) {
+      applyLayout(activeIndex);
+    } else {
+      clearInlineLayout();
+    }
+  });
+
+  if (canUseCustomCursor && cursor) {
+    grid.addEventListener('mouseover', (e) => {
+      if (e.target.closest('.bento-cell')) {
+        cursor.classList.add('is-visible');
+      }
+    });
+
+    grid.addEventListener('mouseout', (e) => {
+      if (!e.relatedTarget || !grid.contains(e.relatedTarget)) {
+        cursor.classList.remove('is-visible');
+      }
+    });
+
+    grid.addEventListener('mousemove', (e) => {
+      if (!e.target.closest('.bento-cell')) return;
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
+  }
+})();
 

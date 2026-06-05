@@ -3,6 +3,7 @@
  * mobile:   max-width 734px
  * tablet:   735px – 1068px
  * desktop:  1069px – 1439px
+ * desktop estreito: 1069px – 1280px (overrides em bloco dedicado)
  * large:    1440px – 2159px
  * xlarge:   2160px+  (4K)
  */
@@ -17,8 +18,8 @@
   .hero__split {
     max-width: 1360px;
     gap: var(--space-4xl);
-    padding-left:  var(--space-2xl);
-    padding-right: var(--space-2xl);
+    padding-left:  0;
+    padding-right: 0;
   }
 
   .hero__title {
@@ -36,7 +37,7 @@
 
   .hero__split {
     max-width: 1920px;
-    gap: 120px;
+    gap: var(--space-md);
     padding-left:  80px;
     padding-right: 80px;
     padding-bottom: 140px;
@@ -59,6 +60,56 @@
   }
 }
 
+/* ── Desktop estreito — 1069px a 1280px ─────── */
+@media (max-width: 1280px) and (min-width: 1069px) {
+
+
+  .story-section__two-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  .beja-importance__grid .story-section__col-img img {
+    height: auto;
+    max-height: 360px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .stat-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .bento-cell--tall {
+    grid-row: span 1;
+    min-height: 240px;
+  }
+
+  .missao-card {
+    flex-direction: column;
+  }
+
+  .missao-card__img-wrap {
+    flex: none;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+
+  .missao-card__img-wrap img {
+    min-height: 0;
+  }
+
+  .missao-card__body {
+    min-height: 0;
+  }
+}
+
 /* ── Tablet ───────────────────────────────── */
 @media (max-width: 1068px) {
 
@@ -70,19 +121,19 @@
 
   .section-inner,
   .section-inner--wide {
-    padding: 0;   /* gutter vem do auto-margin do 90vw */
+    padding: 0 var(--space-md);   /* gutter mínimo 16px */
   }
 
-  /* Hero split → uma coluna em tablet */
+  /* Hero split — coluna em tablet */
   .hero__split {
-    grid-template-columns: 1fr;
     gap: var(--space-2xl);
     padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
     text-align: center;
   }
 
-  /* Vídeo sobe acima do texto */
-  .hero__video { order: -1; }
+  .hero__video {
+    width: 100%;
+  }
 
   .hero__text {
     align-items: center;
@@ -94,6 +145,11 @@
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .hero__title {
+    width: auto;
+    min-width: auto;
   }
 
   .hero__subtitle { margin-bottom: var(--space-xl); }
@@ -117,7 +173,7 @@
 
   /* Stat cards */
   .stat-cards {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   /* Feature cards */
@@ -128,13 +184,44 @@
 
   /* CTA cards */
   .cta-cards {
-    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .cta-card {
+    padding: var(--space-xl) var(--space-lg);
   }
 
   /* Story two-col */
   .story-section__two-col {
     grid-template-columns: 1fr;
     gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  .beja-importance__grid .story-section__col-img img {
+    height: auto;
+    max-height: 320px;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Missão — cards empilhados */
+  .missao-card {
+    flex-direction: column;
+  }
+
+  .missao-card__img-wrap {
+    flex: none;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+
+  .missao-card__img-wrap img {
+    min-height: 0;
+  }
+
+  .missao-card__body {
+    min-height: 0;
   }
 
   .story-section__two-col--reverse {
@@ -144,11 +231,31 @@
   /* Bento */
   .bento-grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 240px 240px 240px;
+    grid-template-rows: auto;
+    min-height: 0;
   }
 
-  .bento-cell--wide   { grid-column: span 1; }
-  .bento-cell--tall   { grid-row: span 1; }
+  .bento-grid.has-selection {
+    min-height: 0;
+  }
+
+  .bento-cell           { min-height: 220px; }
+  .bento-cell--wide     { grid-column: span 2; }
+  .bento-cell--tall     { grid-row: span 1; min-height: 240px; }
+
+  .bento-grid.has-selection .bento-cell {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .bento-grid.has-selection .bento-cell.is-active {
+    grid-column: 1 / -1 !important;
+    min-height: min(50vw, 380px);
+  }
+
+  .bento-grid.has-selection .bento-cell:not(.is-active) {
+    min-height: 180px;
+  }
 
   /* Footer */
   .site-footer__inner {
@@ -170,7 +277,7 @@
 
   .section-inner,
   .section-inner--wide {
-    padding: 0;   /* gutter vem do auto-margin do 90vw */
+    padding: 0 var(--space-md);   /* gutter mínimo 16px */
   }
 
   /* NAV */
@@ -184,14 +291,14 @@
 
   /* Hero */
   .hero__split {
-    grid-template-columns: 1fr;
     gap: var(--space-xl);
     padding: var(--space-xl) var(--space-md) var(--space-3xl);
     text-align: center;
   }
 
-  /* Vídeo sobe acima do texto */
-  .hero__video { order: -1; }
+  .hero__video {
+    width: 100%;
+  }
 
   .hero__text {
     align-items: center;
@@ -205,17 +312,24 @@
     margin-right: auto;
   }
 
+  .hero__title {
+    width: auto;
+    min-width: auto;
+  }
+
   .hero__subtitle { margin-bottom: var(--space-xl); }
 
   .hero__actions {
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: var(--space-sm);
   }
 
   .hero__actions .btn {
-    width: 100%;
-    max-width: 320px;
+    width: auto;
+    padding: 12px var(--space-md);
+    font-size: var(--text-md);
     justify-content: center;
   }
 
@@ -255,7 +369,6 @@
 
   /* CTA cards */
   .cta-cards {
-    grid-template-columns: 1fr;
     gap: var(--space-md);
   }
 
@@ -264,11 +377,31 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     gap: var(--space-sm);
+    min-height: 0;
+  }
+
+  .bento-grid.has-selection {
+    min-height: 0;
   }
 
   .bento-cell           { height: 220px; }
   .bento-cell--wide     { grid-column: span 1; }
   .bento-cell--tall     { grid-row: span 1; height: 220px; }
+
+  .bento-grid.has-selection .bento-cell {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+    height: auto;
+    min-height: 160px;
+  }
+
+  .bento-grid.has-selection .bento-cell.is-active {
+    min-height: min(72vw, 400px);
+  }
+
+  .bento-grid.has-selection .bento-cell:not(.is-active) {
+    min-height: 140px;
+  }
 
   /* Partners */
   .partners-grid {
@@ -281,9 +414,6 @@
   .story-section__col-img img {
     height: 260px;
   }
-
-  /* Hero scroll indicator */
-  .hero__scroll { display: none; }
 
   /* Footer */
   .site-footer__inner {
